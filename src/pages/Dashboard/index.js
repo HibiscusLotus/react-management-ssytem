@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Card, Progress, Row, Col } from 'antd';
 import DashboardTodo from './todo.js';
-import IconFont from '../../IconFont';
-import SCharts from '../../Schart';
+import IconFont from '../../components/IconFont';
+import SCharts from '../../components/Schart';
 import styles from './index.module.css';
 
 class Dashboard extends Component {

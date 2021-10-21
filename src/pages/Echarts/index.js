@@ -1,6 +1,7 @@
 import React, { Component, createRef } from 'react'
 import { chartData } from '../../api/index'
 import Echart from '../../components/Echarts'
+import '../../mock/index'
 import styles from './index.module.css'
 
 
@@ -10,67 +11,50 @@ class Echarts extends Component {
         this.chartRef = createRef()
         this.myChart = null
         this.state = {
-            chart: {
-                options: {
-                    xAxis: {
-                        type: 'category',
-                        data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                    },
-                    yAxis: {
-                        type: 'value'
-                    },
-                    series: [{
-                        data: [260, 230, 224, 218, 135, 147, 150],
-                        type: 'line'
-                    }]
-                },
-                data: {
-                    series: [{
-                        data: [260, 230, 224, 218, 135, 147, 150],
-                    }]
-                }
-            },
-            chartOption: {
-                xAxis: {
-                    type: 'category',
-                    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-                },
-                yAxis: {
-                    type: 'value'
-                },
-                series: [
-                    {
-                        data: [260, 230, 224, 218, 135, 147, 150],
-                        type: 'line'
-                    }
-                ]
-            },
-            data: [260, 230, 224, 218, 135, 147, 150]
+            charts: [],
         }
     }
-    // componentDidMount() {
 
+    componentDidMount() {
+        //获取图表数据
+        chartData({ size: 5 })
+            .then(res => {
+                const charts = []
+                res.body.options.map(option => {
+                    const template = this.createTemplate()
+                    template.series.type = option.type
+                    template.series.data = option.data
+                    charts.push(template)
+                })
+                this.setState({
+                    charts
+                })
+            })
+            .catch(e => console.log('出错了'));
+    }
 
-    //     this.updateChart()
-
-    //     this.updateChart(this.state.data)
-    //     this.myChart.setOption(this.state.data)
-    // }
-    // createChart(){
-    //   this.myChart1 = charts.init(document.getElementById('chart1'))
-    //   this.myChart = charts.init(document.getElementById('chartRef'))
-    // }
-    // getChartData(){
-    //     chartData()
-    //     this.updateChart()
-    // }
-    // updateChart(options) {
-    //     this.myChart.setOption(options ? options : this.state.chartOption)
-    // }
+    createTemplate() {
+        return {
+            xAxis: {
+                type: 'category',
+                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: [],
+                type: ""
+            }]
+        }
+    }
 
     render() {
+        const { charts } = this.state;
         return <>
-            <Echart width='200' height='200' chart={this.state.chart} />
+            {charts.map((option, index) => {
+                 <Echart chart={option} key={index} />
+            })}
         </>
     }
 }

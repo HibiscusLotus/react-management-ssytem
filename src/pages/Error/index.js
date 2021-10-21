@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ErrorPage from '../../ErrorPage/index';
+import ErrorPage from '../../components/ErrorPage/index';
 
 class ErrorRoute extends Component{
     render(){

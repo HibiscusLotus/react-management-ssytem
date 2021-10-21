@@ -4,16 +4,14 @@ import * as charts from 'echarts'
 
 function Echart(props) {
     const chart = useRef();
-    const [chartData] = useState(props.chart.data)
+    const option = useState(props.chart)
     let myChart
     useEffect(() => {
         myChart = charts.init(chart.current)
-        myChart.setOption(props.chart.options)
+        // myChart.setOption(props.chart)
+        myChart.setOption(option)
     }, [])
-    useEffect(() => {
-        myChart.setOption(chartData)
-    }, [chartData])
-    return <div width={props.width} height={props.height} ref={chart} />
+    return <div style={{ width: '200px', height: '200px' }} ref={chart} />
 }
 
 export default Echart

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
-import Header from "../../Header/index";
-import Sidebar from "../../Sidebar/index";
-import { MainRoutes } from "../../../router";
-import Events from "../../Events";
+import Header from "../../components/Header/index";
+import Sidebar from "../../components/Sidebar/index";
+import { MainRoutes } from "../../router";
+import Events from "../../components/Events";
 import styles from "./index.module.css";
 
 class Main extends Component {
