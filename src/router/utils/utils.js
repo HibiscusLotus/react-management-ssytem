@@ -4,11 +4,10 @@ export const request = (url, init) => {
 
 // 管理员校验，这里简单判断用户名是否为admin，使用时根据实际情况进行修改
 export const checkIsAdmin = () => {
-    localStorage.setItem('ms_username', 'user');
-    return localStorage.getItem('ms_username') === 'admin';
+    return localStorage.getItem('uname') === 'admin';
 }
 
 // 登录校验，这里简单判断是否有localstorage则表示是否已登录
 export const checkAuth = () => {
-    return !!localStorage.getItem('ms_username');
+    return !!localStorage.getItem('uname');
 }

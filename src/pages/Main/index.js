@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Layout } from "antd";
 import Header from "../../components/Header/index";
 import Sidebar from "../../components/Sidebar/index";
-import { MainRoutes } from "../../router";
+import { MainRoutes } from "../../router/router";
 import Events from "../../components/Events";
 import styles from "./index.module.css";
 

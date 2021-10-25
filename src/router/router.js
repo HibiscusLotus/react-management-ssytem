@@ -1,21 +1,21 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { checkIsAdmin, checkAuth } from './utils/utils';
-const Login = lazy(() => import('./pages/Login/index'));
-const Main = lazy(() => import('./pages/Main/index'));
-const Icons = lazy(() => import('./pages/Icons/index'));
-const Tables = lazy(() => import('./pages/Tables/index'));
-const Dashboard = lazy(() => import('./pages/Dashboard/index'));
-const Tabs = lazy(() => import('./pages/Tabs/index'));
-const Forms = lazy(() => import('./pages/Forms/index'));
-const Upload = lazy(() => import('./pages/Forms/upload'));
-const Charts = lazy(() => import('./pages/Charts/index'));
-const ErrorRoute = lazy(() => import('./pages/Error/index'));
-const Permission = lazy(() => import('./pages/Permission/index'));
-const Locale = lazy(() => import('./pages/Locale/index'))
-const Editor = lazy(() => import('./pages/Editor/index'))
-const Markdown = lazy(() => import('./pages/Markdown/index'))
-const Echarts = lazy(() => import('./pages/Echarts/index'))
+const Login = lazy(() => import('../pages/Login/index'));
+const Main = lazy(() => import('../pages/Main/index'));
+const Icons = lazy(() => import('../pages/Icons/index'));
+const Tables = lazy(() => import('../pages/Tables/index'));
+const Dashboard = lazy(() => import('../pages/Dashboard/index'));
+const Tabs = lazy(() => import('../pages/Tabs/index'));
+const Forms = lazy(() => import('../pages/Forms/index'));
+const Upload = lazy(() => import('../pages/Forms/upload'));
+const Charts = lazy(() => import('../pages/Charts/index'));
+const ErrorRoute = lazy(() => import('../pages/Error/index'));
+const Permission = lazy(() => import('../pages/Permission/index'));
+const Locale = lazy(() => import('../pages/Locale/index'))
+const Editor = lazy(() => import('../pages/Editor/index'))
+const Markdown = lazy(() => import('../pages/Markdown/index'))
+const Echarts = lazy(() => import('../pages/Echarts/index'))
 
 
 export const AppRoutes = () => {

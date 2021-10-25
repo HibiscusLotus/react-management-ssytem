@@ -1,9 +1,23 @@
+/**
+ * 提示框
+ */
+
 import React, { Component } from 'react';
 import { Input, Modal, Form } from 'antd';
 
 class EditDialog extends Component {
-    state = {
-        form: this.props.form
+    constructor(props){
+        super(props)
+        this.state = {
+            form:this.props.form
+        }
+    }
+    handleChange(param, e) {
+        const form = {...this.state.form};
+        form[param] = e.target.value;
+        this.setState({
+            form
+        })
     }
     render() {
         return (
@@ -23,13 +37,6 @@ class EditDialog extends Component {
                 </Form>
             </Modal>
         )
-    }
-    handleChange(param, e) {
-        const form = {...this.state.form};
-        form[param] = e.target.value;
-        this.setState({
-            form
-        })
     }
 }
 

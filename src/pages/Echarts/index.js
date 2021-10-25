@@ -22,8 +22,8 @@ class Echarts extends Component {
                 const charts = []
                 res.body.options.map(option => {
                     const template = this.createTemplate()
-                    template.series.type = option.type
-                    template.series.data = option.data
+                    template.series[0].type = option.type
+                    template.series[0].data = option.data
                     charts.push(template)
                 })
                 this.setState({
@@ -53,7 +53,7 @@ class Echarts extends Component {
         const { charts } = this.state;
         return <>
             {charts.map((option, index) => {
-                 <Echart chart={option} key={index} />
+                return <Echart width="300px" height="300px" chart={option} key={index} />
             })}
         </>
     }

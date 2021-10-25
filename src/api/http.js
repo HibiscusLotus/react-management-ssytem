@@ -2,19 +2,17 @@
  *封装xaios方法 
  */
 import axios from "axios";
+import { config } from "./config";
 
 // 引入tokend
-let store
-// import store from "../store";
+let store = config.token ? require("../store") : ""
 
 // 默认配置
-axios.defaults.timeout = 5000;
+axios.defaults.timeout = config.timeOut;
+axios.defaults.baseURL = config.baseUrl;
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded;charset=UTF-8";
-// api默认地址
-// axios.defaults.baseURL = "https://admin.xhjrbkp.com/";
-// 测试地址
-axios.defaults.baseURL = "127.0.0.1:8088/";
+
 
 // 请求规则
 axios.interceptors.request.use(

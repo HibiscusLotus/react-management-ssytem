@@ -1,10 +1,13 @@
+/**
+ * 表格页
+ */
 import React, { Component } from "react";
 import { Table, message, Select, Input, Button, Breadcrumb, Tag } from "antd";
 import styles from "./index.module.css";
 import DeleteDialog from "./deleteDialog";
 import EditDialog from "./editDialog";
 import IconFont from "../../components/IconFont";
-import { request } from "../../utils/utils";
+import { request } from "../../router/utils/utils";
 
 class Tables extends Component {
 	constructor(props) {
@@ -89,85 +92,6 @@ class Tables extends Component {
 			tableList: []
 		};
 		this.getData();
-	}
-	render() {
-		return (
-			<div>
-				<div className="crumbs">
-					<Breadcrumb separator="/">
-						<Breadcrumb.Item>
-							<IconFont type="anticon-lx-cascades" /> 基础表格
-						</Breadcrumb.Item>
-					</Breadcrumb>
-				</div>
-				<div className="container">
-					<div className={styles.handleBox}>
-						<Button type="primary" icon="delete" className={`${styles.handleDle} ${styles.mr10}`}>
-							批量删除
-						</Button>
-						<Select
-							placeholder="筛选省份"
-							allowClear={true}
-							className={`${styles.handleSelect} ${styles.mr10}`}
-							onChange={this.handleChangeSelect.bind(this)}
-						>
-							<Select.Option value="广东省">广东省</Select.Option>
-							<Select.Option value="湖南省">湖南省</Select.Option>
-						</Select>
-						<Input
-							value={this.state.screenName}
-							placeholder="筛选关键词"
-							className={`${styles.handleInput} ${styles.mr10}`}
-							onChange={this.handleChangeInput.bind(this)}
-						/>
-						<Button type="primary" icon="search" onClick={this.filterData.bind(this)}>
-							搜索
-						</Button>
-					</div>
-					<Table
-						style={{ width: "100%" }}
-						columns={this.state.columns}
-						dataSource={this.state.tableList}
-						bordered
-						rowKey="id"
-						rowSelection={{
-							columnWidth: "50px",
-							onSelectAll: selection => {
-								console.log(selection);
-							}
-						}}
-						pagination={{
-							total: 50,
-							showTotal: total => `共${total}条`,
-							onChange: () => {
-								this.getData();
-							}
-						}}
-						size="middle"
-					/>
-				</div>
-				<DeleteDialog
-					visible={this.state.delVisible}
-					onCancel={() => {
-						this.handleCancel();
-					}}
-					onSure={() => {
-						this.deleteRow();
-					}}
-				/>
-				<EditDialog
-					visible={this.state.editVisible}
-					form={this.state.data[this.state.idx]}
-					key={this.state.editId}
-					onCancel={() => {
-						this.handleCancel();
-					}}
-					onSure={param => {
-						this.editRow(param);
-					}}
-				/>
-			</div>
-		);
 	}
 	// 获取列表数据
 	getData(idx) {
@@ -264,6 +188,85 @@ class Tables extends Component {
 		this.setState({
 			screenName: e.target.value
 		});
+	}
+	render() {
+		return (
+			<div>
+				<div className="crumbs">
+					<Breadcrumb separator="/">
+						<Breadcrumb.Item>
+							<IconFont type="anticon-lx-cascades" /> 基础表格
+						</Breadcrumb.Item>
+					</Breadcrumb>
+				</div>
+				<div className="container">
+					<div className={styles.handleBox}>
+						<Button type="primary" icon="delete" className={`${styles.handleDle} ${styles.mr10}`}>
+							批量删除
+						</Button>
+						<Select
+							placeholder="筛选省份"
+							allowClear={true}
+							className={`${styles.handleSelect} ${styles.mr10}`}
+							onChange={this.handleChangeSelect.bind(this)}
+						>
+							<Select.Option value="广东省">广东省</Select.Option>
+							<Select.Option value="湖南省">湖南省</Select.Option>
+						</Select>
+						<Input
+							value={this.state.screenName}
+							placeholder="筛选关键词"
+							className={`${styles.handleInput} ${styles.mr10}`}
+							onChange={this.handleChangeInput.bind(this)}
+						/>
+						<Button type="primary" icon="search" onClick={this.filterData.bind(this)}>
+							搜索
+						</Button>
+					</div>
+					<Table
+						style={{ width: "100%" }}
+						columns={this.state.columns}
+						dataSource={this.state.tableList}
+						bordered
+						rowKey="id"
+						rowSelection={{
+							columnWidth: "50px",
+							onSelectAll: selection => {
+								console.log(selection);
+							}
+						}}
+						pagination={{
+							total: 50,
+							showTotal: total => `共${total}条`,
+							onChange: () => {
+								this.getData();
+							}
+						}}
+						size="middle"
+					/>
+				</div>
+				<DeleteDialog
+					visible={this.state.delVisible}
+					onCancel={() => {
+						this.handleCancel();
+					}}
+					onSure={() => {
+						this.deleteRow();
+					}}
+				/>
+				<EditDialog
+					visible={this.state.editVisible}
+					form={this.state.data[this.state.idx]}
+					key={this.state.editId}
+					onCancel={() => {
+						this.handleCancel();
+					}}
+					onSure={param => {
+						this.editRow(param);
+					}}
+				/>
+			</div>
+		);
 	}
 }
 

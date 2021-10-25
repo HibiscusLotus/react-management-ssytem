@@ -54,8 +54,17 @@ export default [
 	},
 	{
 		icon: 'anticon-lx-rank',
-		index: '/main/charts',
-		title: 'schart图表'
+		title: 'schart图表',
+		subs:[
+			{
+				index:'/main/charts',
+				title:'schart图表'
+			},
+			{
+				index:'/main/echarts',
+				title:'echarts图表'
+			}
+		]
 	},
 	{
 		icon: 'anticon-lx-global',

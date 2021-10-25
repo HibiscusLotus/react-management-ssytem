@@ -11,7 +11,7 @@ class Sidebar extends Component {
 		return (
 			<div className="sidebar">
 				<div className="sidabar-header">
-					<img className="logo" src={require("../../assets/img/logo.svg")} alt="" />
+					<img className="logo" src={require("../../assets/img/logo.svg")} />
 					{!collapsed && <span>管理系统</span>}
 				</div>
 				<Menu

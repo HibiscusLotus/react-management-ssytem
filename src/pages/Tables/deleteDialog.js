@@ -1,3 +1,7 @@
+/*
+ *删除数据
+ */
+
 import React, {Component} from 'react';
 import { Modal } from 'antd';
 
@@ -7,6 +11,9 @@ const delDialogCnt = {
 }
 
 class DeleteDialog extends Component{
+    constructor(props){
+        super(props)
+    }
     render(){
         return (
             <Modal
